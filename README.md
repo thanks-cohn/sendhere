@@ -1,80 +1,68 @@
+# SendHere
 
+Select files. Right click. Send them somewhere. Done.
 
-## SendHere
+Stop dragging files across your desktop like an animal.  
+THE FUTURE IS NOW. 
 
+SendHere adds a simple right-click action to Dolphin so you can send selected files to a destination folder without dragging, copying paths, or playing window games.
 
+No dragging.  
+No copying paths.  
+No guessing.  
 
-Select files. Click destination. Type `sendhere`. Done.
+Just: select → SendHere → choose destination → done.
 
+---
 
+## How It Works
 
-------------------------------------------------------------
-
-Stop dragging files across your desktop like an animal.
-We have the technology.
-
-SendHere lets you send files instantly to the folder you're
-already looking at.
-
-No dragging. No copying paths. No guessing.
-Just: select → send → done.
-
-------------------------------------------------------------
-
-HOW IT WORKS
-
-1. Select files in your file manager (Dolphin)
+1. Select files in Dolphin
 2. Right click → SendHere
-3. Confirm destination
+3. Choose the destination folder
 4. Done
 
-------------------------------------------------------------
+---
 
-CLI USAGE (optional)
+## Current Status
 
-sendhere
+This is an early v0 build.
 
-Sends selected files to the active folder window.
+Right now, SendHere copies files using `cp -r`.
 
-------------------------------------------------------------
+That means:
 
-EXAMPLE
+- If a file with the same name already exists, normal copy behavior applies
+- Overwrite/conflict handling is not polished yet
+- Rename-on-conflict is not implemented yet
+- Move mode is not implemented yet
 
-Destination:
-/home/user/Projects/api
+Future versions should handle this better with options like:
 
-Selected files:
-- report.pdf
-- photo.png
+- skip existing files
+- overwrite existing files
+- rename duplicates automatically
+- move instead of copy
 
-Send? [y/N]: y
+---
 
-Done.
+## Requirements
 
-------------------------------------------------------------
+Currently tested on:
 
-INSTALL
+- Garuda Linux
+- KDE Plasma 6
+- Dolphin file manager
+- Wayland session
 
-git clone https://github.com/yourname/sendhere
-cd sendhere
-./install.sh
+Required tools:
 
-------------------------------------------------------------
+- `bash`
+- `kdialog`
+- `cp`
+- KDE/Dolphin service menu support
 
-UNINSTALL
+On Arch/Garuda systems, these are usually already available. If not:
 
-./uninstall.sh
-
-------------------------------------------------------------
-
-WHY?
-
-Because this:
-
-drag → miss → drag again → wrong window → alt-tab → drag...
-
-...is insane.
-
-------------------------------------------------------------
-
-SendHere — files go where your eyes are.
+```bash
+sudo pacman -S kdialog
