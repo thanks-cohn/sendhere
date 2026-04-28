@@ -66,3 +66,80 @@ On Arch/Garuda systems, these are usually already available. If not:
 
 ```bash
 sudo pacman -S kdialog
+
+
+------------------------------------------------------------
+
+FILE PLACEMENT (MANUAL SETUP)
+
+If you are not using install.sh, do this manually:
+
+1) MAIN SCRIPT
+
+Put the sendhere script here:
+
+  ~/.local/bin/sendhere
+
+Make it executable:
+
+  chmod +x ~/.local/bin/sendhere
+
+Make sure ~/.local/bin is in your PATH.
+
+------------------------------------------------------------
+
+2) RIGHT CLICK MENU (DOLPHIN)
+
+Put the service file here:
+
+  ~/.local/share/kio/servicemenus/sendhere.desktop
+
+If the folders do not exist:
+
+  mkdir -p ~/.local/bin
+  mkdir -p ~/.local/share/kio/servicemenus
+
+------------------------------------------------------------
+
+3) FIX THE EXEC PATH (IMPORTANT)
+
+Open the file:
+
+  nano ~/.local/share/kio/servicemenus/sendhere.desktop
+
+Make sure this line exists:
+
+  Exec=sendhere %U
+
+If that does NOT work, use full path:
+
+  Exec=/home/your-username/.local/bin/sendhere %U
+
+Example:
+
+  Exec=/home/big-bro/.local/bin/sendhere %U
+
+------------------------------------------------------------
+
+4) REFRESH DOLPHIN
+
+Run:
+
+  kbuildsycoca6
+  killall dolphin
+  dolphin &
+
+------------------------------------------------------------
+
+NOTES
+
+- Replace "your-username" with your actual username
+- Built for KDE Plasma + Dolphin
+- Tested on Garuda Linux (Arch-based)
+- v0 does NOT handle file overwrite conflicts yet
+
+
+
+
+
+
